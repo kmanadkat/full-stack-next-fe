@@ -16,6 +16,12 @@ export default function Home() {
           <li>
             <Link href="/about">About Page</Link>
           </li>
+          <li>
+            <Link href="/product/sample">/ Product / Sample Page</Link>
+          </li>
+          <li>
+            <Link href="/user/uid-1234">/ User / uid-1234 Page</Link>
+          </li>
         </ul>
       </main>
     </div>

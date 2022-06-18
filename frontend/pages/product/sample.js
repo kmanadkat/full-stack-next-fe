@@ -1,9 +1,9 @@
 import Link from "next/link";
 
-export default function Home() {
+export default function Sample() {
   return (
     <div>
-      <h1>About Page</h1>
+      <h1>Sample Product Page</h1>
       <ul>
         <li>
           <Link href="/">Home Page</Link>
