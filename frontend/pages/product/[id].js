@@ -1,14 +1,14 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-export default function User() {
+export default function Product() {
   const router = useRouter();
   const { id } = router.query;
 
   return (
     <div>
-      <h1>User Page</h1>
-      <p>User Id: {id}</p>
+      <h1>Product Page</h1>
+      <p>Product Id: {id}</p>
       <ul>
         <li>
           <Link href="/">Home Page</Link>
