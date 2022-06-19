@@ -5,7 +5,7 @@ export const ProductDetailsStyled = styled.div`
   justify-content: space-between;
   margin-top: 5rem;
   img {
-    width: 48%;
+    width: 40%;
     border-radius: 8px;
   }
 `
