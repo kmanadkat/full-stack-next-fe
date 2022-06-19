@@ -1,6 +1,14 @@
 import { useRouter } from 'next/router'
 import { useQuery } from 'urql'
 import { GET_PRODUCT_QUERY } from '../../lib/query'
+import {
+  BuyStyled,
+  ProductDetailsStyled,
+  ProductInfoStyled,
+  QuantityStyled,
+} from '../../styles/ProductDetails.Style'
+
+import { AiFillPlusCircle, AiFillMinusCircle } from 'react-icons/ai'
 
 export default function ProductDetails() {
   const { query } = useRouter()
@@ -17,20 +25,28 @@ export default function ProductDetails() {
 
   if (error) return <p>Oh no... {error.message}</p>
   console.log(data)
+
+  const { title, description, image, price } = data.products.data[0].attributes
+  const { medium } = image.data.attributes.formats
+
   return (
-    <div>
-      <img src='' alt='' />
-      <div>
-        <h3>Title</h3>
-        <p>Description</p>
-      </div>
-      <div>
-        <span>Quantity</span>
-        <button>Plus</button>
-        <p>0</p>
-        <button>Minus</button>
-      </div>
-      <button>Add to cart</button>
-    </div>
+    <ProductDetailsStyled>
+      <img src={medium.url} alt={title} />
+      <ProductInfoStyled>
+        <h3>{title}</h3>
+        <p>{description}</p>
+        <QuantityStyled>
+          <span>Quantity</span>
+          <button>
+            <AiFillMinusCircle />
+          </button>
+          <p>0</p>
+          <button>
+            <AiFillPlusCircle />
+          </button>
+        </QuantityStyled>
+        <BuyStyled>Add to cart</BuyStyled>
+      </ProductInfoStyled>
+    </ProductDetailsStyled>
   )
 }

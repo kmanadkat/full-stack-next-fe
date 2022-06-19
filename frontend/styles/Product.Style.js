@@ -13,6 +13,7 @@ export const ProductStyles = styled.div`
     cursor: pointer;
     background-repeat: no-repeat;
     background-position: top center;
+    border-radius: 8px;
   }
 
   h2 {
