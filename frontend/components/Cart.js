@@ -5,13 +5,14 @@ import {
   CartEmptyStyled,
   CartStyled,
   CartWrapperStyled,
+  CheckoutStyled,
 } from '../styles/Cart.Styles'
 import { QuantityStyled } from '../styles/ProductDetails.Style'
 import { FaShoppingCart } from 'react-icons/fa'
 import { AiFillMinusCircle, AiFillPlusCircle } from 'react-icons/ai'
 
 export default function Cart() {
-  const { cartItems, setShowCart, onAddToCart, onRemoveFromCart } =
+  const { cartItems, setShowCart, onAddToCart, onRemoveFromCart, totalPrice } =
     useStateContext()
 
   return (
@@ -33,7 +34,7 @@ export default function Cart() {
                 }}></div>
               <CardInfoStyled>
                 <h3>{item.title}</h3>
-                <h3>{item.price}</h3>
+                <h3>{item.price}$</h3>
                 <QuantityStyled>
                   <span>Quantity</span>
                   <button onClick={() => onRemoveFromCart(item)}>
@@ -47,6 +48,12 @@ export default function Cart() {
               </CardInfoStyled>
             </CartCardStyled>
           ))}
+        {cartItems.length > 0 && (
+          <CheckoutStyled>
+            <h3>Subtotal: {totalPrice}$</h3>
+            <button>Checkout</button>
+          </CheckoutStyled>
+        )}
       </CartStyled>
     </CartWrapperStyled>
   )

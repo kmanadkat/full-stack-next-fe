@@ -25,6 +25,22 @@ export const NavItemsStyled = styled.div`
     align-items: center;
   }
 
+  span {
+    position: absolute;
+    top: -15%;
+    right: -10%;
+    color: white;
+    background-color: var(--primary);
+    width: 1.3rem;
+    height: 1.32rem;
+    border-radius: 50%;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+  }
+
   h3 {
     font-size: 1rem;
     padding: 0.25rem;

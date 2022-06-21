@@ -70,3 +70,15 @@ export const CartEmptyStyled = styled.div`
     color: var(--secondary);
   }
 `
+
+export const CheckoutStyled = styled.div`
+  button {
+    background: var(--primary);
+    padding: 1rem 2rem;
+    width: 100%;
+    color: white;
+    margin-top: 2rem;
+    cursor: pointer;
+    border: none;
+  }
+`

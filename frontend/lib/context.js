@@ -6,6 +6,8 @@ export const StateContext = ({ children }) => {
   const [showCart, setShowCart] = useState(false)
   const [cartItems, setCartItems] = useState([])
   const [qty, setQty] = useState(1)
+  const [totalQty, setTotalQty] = useState(0)
+  const [totalPrice, setTotalPrice] = useState(0)
 
   const increaseQty = () => {
     setQty((prev) => prev + 1)
@@ -16,6 +18,10 @@ export const StateContext = ({ children }) => {
   }
 
   const onAddToCart = (product, quantity) => {
+    // Increase Total Price
+    setTotalPrice((prevTotal) => prevTotal + product.price * quantity)
+    // Increase Total Quantity
+    setTotalQty((prevQty) => prevQty + quantity)
     // Product already in cart => update quantity
     const isExists = cartItems.findIndex((item) => item.slug === product.slug)
     if (isExists !== -1) {
@@ -34,6 +40,10 @@ export const StateContext = ({ children }) => {
   }
 
   const onRemoveFromCart = (product) => {
+    // Decrease Total Price
+    setTotalPrice((prevTotal) => prevTotal - product.price)
+    // Decrease Total Quantity
+    setTotalQty((prevQty) => prevQty - 1)
     // Product already in cart => update quantity
     const isExists = cartItems.findIndex((item) => item.slug === product.slug)
     if (isExists !== -1 && cartItems[isExists].quantity === 1) {
@@ -60,6 +70,8 @@ export const StateContext = ({ children }) => {
         setShowCart,
         onAddToCart,
         onRemoveFromCart,
+        totalQty,
+        totalPrice,
       }}>
       {children}
     </ShopContext.Provider>
