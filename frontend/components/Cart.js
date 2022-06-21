@@ -54,10 +54,10 @@ export default function Cart() {
             <FaShoppingCart />
           </CartEmptyStyled>
         )}
-        <CardsStyled variants={cards} initial='hidden' animate='show'>
+        <CardsStyled layout variants={cards} initial='hidden' animate='show'>
           {cartItems.length > 0 &&
             cartItems.map((item) => (
-              <CartCardStyled variants={card} key={item.slug}>
+              <CartCardStyled layout variants={card} key={item.slug}>
                 <div
                   className='cart-item-image'
                   style={{
@@ -81,7 +81,7 @@ export default function Cart() {
             ))}
         </CardsStyled>
         {cartItems.length > 0 && (
-          <CheckoutStyled>
+          <CheckoutStyled layout>
             <h3>Subtotal: {totalPrice}$</h3>
             <button>Checkout</button>
           </CheckoutStyled>
