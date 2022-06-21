@@ -1,6 +1,7 @@
 import styled from 'styled-components'
+const { motion } = require('framer-motion')
 
-export const CartWrapperStyled = styled.div`
+export const CartWrapperStyled = styled(motion.div)`
   position: fixed;
   right: 0;
   top: 0;
@@ -12,7 +13,7 @@ export const CartWrapperStyled = styled.div`
   justify-content: flex-end;
 `
 
-export const CartStyled = styled.div`
+export const CartStyled = styled(motion.div)`
   width: 33%;
   background: #f1f1f1;
   padding: 2rem 5rem;
@@ -20,7 +21,7 @@ export const CartStyled = styled.div`
   position: relative;
 `
 
-export const CartCardStyled = styled.div`
+export const CartCardStyled = styled(motion.div)`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -39,7 +40,7 @@ export const CartCardStyled = styled.div`
   }
 `
 
-export const CardInfoStyled = styled.div`
+export const CardInfoStyled = styled(motion.div)`
   width: 50%;
   div {
     display: flex;
@@ -47,14 +48,12 @@ export const CardInfoStyled = styled.div`
   }
 `
 
-export const CartEmptyStyled = styled.div`
+export const CartEmptyStyled = styled(motion.div)`
   position: absolute;
   top: 0;
-  left: 50%;
-  transform: translate(-50%, 0);
   text-align: center;
   height: 100%;
-  width: 100%;
+  width: 75%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -71,7 +70,7 @@ export const CartEmptyStyled = styled.div`
   }
 `
 
-export const CheckoutStyled = styled.div`
+export const CheckoutStyled = styled(motion.div)`
   button {
     background: var(--primary);
     padding: 1rem 2rem;

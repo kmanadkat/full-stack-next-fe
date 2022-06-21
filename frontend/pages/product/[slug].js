@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useQuery } from 'urql'
 import { GET_PRODUCT_QUERY } from '../../lib/query'
@@ -10,7 +11,6 @@ import {
 
 import { AiFillPlusCircle, AiFillMinusCircle } from 'react-icons/ai'
 import { useStateContext } from '../../lib/context'
-import Head from 'next/head'
 
 export default function ProductDetails() {
   // App Data
