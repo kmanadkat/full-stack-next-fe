@@ -10,6 +10,7 @@ import {
 
 import { AiFillPlusCircle, AiFillMinusCircle } from 'react-icons/ai'
 import { useStateContext } from '../../lib/context'
+import Head from 'next/head'
 
 export default function ProductDetails() {
   // App Data
@@ -33,26 +34,33 @@ export default function ProductDetails() {
   const { medium } = image.data.attributes.formats
 
   return (
-    <ProductDetailsStyled>
-      <img src={medium.url} alt={title} />
-      <ProductInfoStyled>
-        <h3>{title}</h3>
-        <p>{description}</p>
-        <QuantityStyled>
-          <span>Quantity</span>
-          <button onClick={decreaseQty}>
-            <AiFillMinusCircle />
-          </button>
-          <p>{qty}</p>
-          <button onClick={increaseQty}>
-            <AiFillPlusCircle />
-          </button>
-        </QuantityStyled>
-        <BuyStyled
-          onClick={() => onAddToCart(data.products.data[0].attributes, qty)}>
-          Add to cart
-        </BuyStyled>
-      </ProductInfoStyled>
-    </ProductDetailsStyled>
+    <>
+      <Head>
+        <title>{title}</title>
+        <meta name='description' content={description} />
+        <link rel='icon' href='/favicon.ico' />
+      </Head>
+      <ProductDetailsStyled>
+        <img src={medium.url} alt={title} />
+        <ProductInfoStyled>
+          <h3>{title}</h3>
+          <p>{description}</p>
+          <QuantityStyled>
+            <span>Quantity</span>
+            <button onClick={decreaseQty}>
+              <AiFillMinusCircle />
+            </button>
+            <p>{qty}</p>
+            <button onClick={increaseQty}>
+              <AiFillPlusCircle />
+            </button>
+          </QuantityStyled>
+          <BuyStyled
+            onClick={() => onAddToCart(data.products.data[0].attributes, qty)}>
+            Add to cart
+          </BuyStyled>
+        </ProductInfoStyled>
+      </ProductDetailsStyled>
+    </>
   )
 }
