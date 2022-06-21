@@ -81,3 +81,5 @@ export const CheckoutStyled = styled(motion.div)`
     border: none;
   }
 `
+
+export const CardsStyled = styled(motion.div)``
