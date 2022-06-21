@@ -33,6 +33,22 @@ export const StateContext = ({ children }) => {
     }
   }
 
+  const onRemoveFromCart = (product) => {
+    // Product already in cart => update quantity
+    const isExists = cartItems.findIndex((item) => item.slug === product.slug)
+    if (isExists !== -1 && cartItems[isExists].quantity === 1) {
+      setCartItems(cartItems.filter((item) => item.slug !== product.slug))
+    } else if (isExists !== -1) {
+      setCartItems((prevState) =>
+        prevState.map((item) => ({
+          ...item,
+          quantity:
+            item.slug === product.slug ? item.quantity - 1 : item.quantity,
+        }))
+      )
+    }
+  }
+
   return (
     <ShopContext.Provider
       value={{
@@ -43,6 +59,7 @@ export const StateContext = ({ children }) => {
         showCart,
         setShowCart,
         onAddToCart,
+        onRemoveFromCart,
       }}>
       {children}
     </ShopContext.Provider>
