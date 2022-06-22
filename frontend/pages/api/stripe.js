@@ -17,6 +17,9 @@ export default async function handler(req, res) {
           {
             shipping_rate: process.env.NEXT_PUBLIC_STRIPE_SHIPPING,
           },
+          {
+            shipping_rate: process.env.NEXT_PUBLIC_STRIPE_FREE_SHIPPING,
+          },
         ],
         allow_promotion_codes: true,
         line_items: req.body.map((item) => ({
