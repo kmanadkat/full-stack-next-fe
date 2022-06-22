@@ -13,6 +13,12 @@ export default async function handler(req, res) {
         shipping_address_collection: {
           allowed_countries: ['IN'],
         },
+        shipping_options: [
+          {
+            shipping_rate: process.env.NEXT_PUBLIC_STRIPE_SHIPPING,
+          },
+        ],
+        allow_promotion_codes: true,
         line_items: req.body.map((item) => ({
           price_data: {
             currency: 'inr',
@@ -21,6 +27,10 @@ export default async function handler(req, res) {
               images: [item.image.data.attributes.formats.thumbnail.url],
             },
             unit_amount: item.price * 7500,
+          },
+          adjustable_quantity: {
+            enabled: true,
+            minimum: 1,
           },
           quantity: item.quantity,
         })),
