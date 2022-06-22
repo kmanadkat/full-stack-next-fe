@@ -28,7 +28,6 @@ export default function ProductDetails() {
   if (fetching) return <p>Loading...</p>
 
   if (error) return <p>Oh no... {error.message}</p>
-  console.log(data)
 
   const { title, description, image } = data.products.data[0].attributes
   const { medium } = image.data.attributes.formats
