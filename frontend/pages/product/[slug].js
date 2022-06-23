@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { useQuery } from 'urql'
 import toast from 'react-hot-toast'
@@ -16,7 +17,13 @@ import { useStateContext } from '../../lib/context'
 export default function ProductDetails() {
   // App Data
   const { query } = useRouter()
-  const { qty, increaseQty, decreaseQty, onAddToCart } = useStateContext()
+  const { qty, setQty, increaseQty, decreaseQty, onAddToCart } =
+    useStateContext()
+
+  // Reset QTY
+  useEffect(() => {
+    setQty(1)
+  }, [])
 
   // Service Data
   const [results] = useQuery({

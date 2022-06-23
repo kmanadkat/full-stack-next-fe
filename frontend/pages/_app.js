@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }) {
     <UserProvider>
       <StateContext>
         <Provider value={client}>
-          <Toaster position='bottom-left' />
+          <Toaster position='top-center' />
           <Nav />
           <Component {...pageProps} />
         </Provider>
