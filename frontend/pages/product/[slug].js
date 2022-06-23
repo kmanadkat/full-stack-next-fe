@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useQuery } from 'urql'
+import toast from 'react-hot-toast'
 import { GET_PRODUCT_QUERY } from '../../lib/query'
 import {
   BuyStyled,
@@ -32,6 +33,11 @@ export default function ProductDetails() {
   const { title, description, image } = data.products.data[0].attributes
   const { medium } = image.data.attributes.formats
 
+  const handleAddToCart = (product, qty) => {
+    onAddToCart(product, qty)
+    toast.success(`${product.title} added to your cart`)
+  }
+
   return (
     <>
       <Head>
@@ -55,7 +61,9 @@ export default function ProductDetails() {
             </button>
           </QuantityStyled>
           <BuyStyled
-            onClick={() => onAddToCart(data.products.data[0].attributes, qty)}>
+            onClick={() =>
+              handleAddToCart(data.products.data[0].attributes, qty)
+            }>
             Add to cart
           </BuyStyled>
         </ProductInfoStyled>
